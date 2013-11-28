@@ -1,0 +1,28 @@
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>&nbsp;</th>
+        <th>Time</th>
+        <th>Host</th>
+        <th>URI</th>
+        <th>Walltime</th>
+        <th>CPU time</th>
+        <th>Memory usage</th>
+        <th>Peak mem usage</th>
+    </tr>
+    </thead>
+    {% if profiles is defined %}
+        {% for profile in profiles %}
+            <tr>
+                <td><a href="/profile/{{ profile._id }}">Details</a></td>
+                <td>{{ profile.fields.tstamp | date('Y-m-d H:i:s') }}</td>
+                <td><a href="/host/{{ profile.fields.host }}">{{ profile.fields.host }}</a></td>
+                <td>{{ profile.fields.uri }}</td>
+                <td>{{ profile.fields.wt }}</td>
+                <td>{{ profile.fields.cpu }}</td>
+                <td>{{ profile.fields.mu }}</td>
+                <td>{{ profile.fields.pmu }}</td>
+            </tr>
+        {% endfor %}
+    {% endif %}
+</table>

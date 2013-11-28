@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <table class="table table-hover tablesorter" id="profile-table">
+    <thead>
+        <tr>
+            <th>Function</th>
+            <th>Call count</th>
+            <th>Walltime</th>
+            <th>CPU time</th>
+            <th>Memory usage</th>
+            <th>Peak mem usage</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for function, profile in results.profile %}
+        <tr>
+            <td>{{ function }}</td>
+            <td>{{ profile.ct }}</td>
+            <td>{{ profile.wt }}</td>
+            <td>{{ profile.cpu }}</td>
+            <td>{{ profile.mu }}</td>
+            <td>{{ profile.pmu }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    <script type="text/javascript">
+    $(document).ready(function()
+    {
+    $("#profile-table").tablesorter({sortList: [[2,1]] });
+    }
+    );
+    </script>
+{% endblock %}
